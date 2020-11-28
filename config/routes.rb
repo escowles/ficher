@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root to: "works#index"
 
-  resources :pages
-  resources :sheets
   resources :works
+  resources :sheets
+  resources :pages
+
+  get "/works/:work_id/sheet/new", to: "sheets#new", as: "new_work_sheet"
 end

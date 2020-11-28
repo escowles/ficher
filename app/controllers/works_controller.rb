@@ -10,6 +10,7 @@ class WorksController < ApplicationController
   # GET /works/1
   # GET /works/1.json
   def show
+    @sheets = Sheet.where(work: @work)
   end
 
   # GET /works/new

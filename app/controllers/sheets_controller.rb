@@ -1,10 +1,11 @@
 class SheetsController < ApplicationController
   before_action :set_sheet, only: [:show, :edit, :update, :destroy]
+  before_action :set_work, only: [:index, :new, :create]
 
   # GET /sheets
   # GET /sheets.json
   def index
-    @sheets = Sheet.all
+    @sheets = Sheet.where(work: @work)
   end
 
   # GET /sheets/1
@@ -19,6 +20,7 @@ class SheetsController < ApplicationController
 
   # GET /sheets/1/edit
   def edit
+    @work = Work.find(@sheet.work_id)
   end
 
   # POST /sheets
@@ -65,6 +67,11 @@ class SheetsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_sheet
       @sheet = Sheet.find(params[:id])
+    end
+
+    def set_work
+      work_id = params[:work_id] || sheet_params[:work_id]
+      @work = Work.find(work_id)
     end
 
     # Only allow a list of trusted parameters through.

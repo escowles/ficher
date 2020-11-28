@@ -7,3 +7,11 @@
 
 <%= link_to 'Edit', edit_work_path(@work) %> |
 <%= link_to 'Back', works_path %>
+
+<h2>Sheets</h2>
+<ul>
+  <% @sheets.each do |sheet| %>
+    <li><%= link_to "#{sheet.number}: #{sheet.title}", sheet %></li>
+  <% end %>
+</ul>
+<%= link_to 'Add Sheet', new_work_sheet_path(@work) %>

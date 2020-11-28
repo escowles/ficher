@@ -12,18 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :number %>
+    <%= form.label :number %>:
     <%= form.number_field :number %>
   </div>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label :title %>:
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :work_id %>
-    <%= form.text_field :work_id %>
+    <%= form.label :work_id %>:
+    <%= @work.title %>
+    <%= form.hidden_field :work_id, value: @work.id %>
   </div>
 
   <div class="actions">
