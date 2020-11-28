@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ficher</title>
+    <title>ficher</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
-
   <body>
+    <%= link_to "ficher", "/" %>
+    <hr/>
     <%= yield %>
   </body>
 </html>

@@ -5,31 +5,23 @@
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Text</th>
+      <th>Work</th>
+      <th>Sheet</th>
       <th>Row</th>
       <th>Col</th>
-      <th>Sheet</th>
-      <th colspan="3"></th>
+      <th>Title</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @pages.each do |page| %>
+    <% @pages.order(sheet_id: :asc, row: :asc, col: :asc).each do |page| %>
       <tr>
-        <td><%= page.title %></td>
-        <td><%= page.text %></td>
+        <td><%= page.sheet.work_id %></td>
+        <td><%= page.sheet_id %></td>
         <td><%= page.row %></td>
         <td><%= page.col %></td>
-        <td><%= page.sheet_id %></td>
-        <td><%= link_to 'Show', page %></td>
-        <td><%= link_to 'Edit', edit_page_path(page) %></td>
-        <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to page.title, page %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Page', new_page_path %>

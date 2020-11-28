@@ -1,16 +1,17 @@
 class SheetsController < ApplicationController
   before_action :set_sheet, only: [:show, :edit, :update, :destroy]
-  before_action :set_work, only: [:index, :new, :create]
+  before_action :set_work, only: [:new]
 
   # GET /sheets
   # GET /sheets.json
   def index
-    @sheets = Sheet.where(work: @work)
+    @sheets = Sheet.all
   end
 
   # GET /sheets/1
   # GET /sheets/1.json
   def show
+    @pages = Page.where(sheet: @sheet)
   end
 
   # GET /sheets/new
@@ -20,7 +21,7 @@ class SheetsController < ApplicationController
 
   # GET /sheets/1/edit
   def edit
-    @work = Work.find(@sheet.work_id)
+    @work = @sheet.work
   end
 
   # POST /sheets
@@ -70,7 +71,7 @@ class SheetsController < ApplicationController
     end
 
     def set_work
-      work_id = params[:work_id] || sheet_params[:work_id]
+      work_id = params[:work_id]
       @work = Work.find(work_id)
     end
 

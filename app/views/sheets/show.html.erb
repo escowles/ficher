@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Work:</strong>
+  <%= link_to @sheet.work.title, @sheet.work %>
+</p>
+
+<p>
   <strong>Number:</strong>
   <%= @sheet.number %>
 </p>
@@ -10,10 +15,19 @@
   <%= @sheet.title %>
 </p>
 
-<p>
-  <strong>Work:</strong>
-  <%= link_to @sheet.work.title, @sheet.work %>
-</p>
-
 <%= link_to 'Edit', edit_sheet_path(@sheet) %> |
-<%= link_to 'Back', sheets_path %>
+<%= link_to 'Back', @sheet.work %>
+
+<h2>Pages</h2>
+<ul>
+  <% @pages.order(row: :asc, col: :asc).each do |page| %>
+    <li><%= link_to "#{page.row}.#{page.col}: #{page.title}", page %></li>
+  <% end %>
+</ul>
+<%= link_to 'Add Page', new_sheet_page_path(@sheet) %>
+
+<hr/>
+
+<%= form_for @sheet, html: {method: :delete} do |f| %>
+  <%= f.submit "Destroy This Sheeet" %>
+<% end %></td>

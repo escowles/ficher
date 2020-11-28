@@ -12,13 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :text %>
-    <%= form.text_field :text %>
+    <%= form.label :sheet_id %>:
+    <%= @sheet.number %>. <%= @sheet.title %>
+    <%= form.hidden_field :sheet_id, value: @sheet.id %>
   </div>
 
   <div class="field">
@@ -32,8 +28,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :sheet_id %>
-    <%= form.text_field :sheet_id %>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :text %>
+    <%= form.text_field :text %>
   </div>
 
   <div class="actions">

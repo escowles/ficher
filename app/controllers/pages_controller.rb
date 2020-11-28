@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :set_sheet, only: [:new]
 
   # GET /pages
   # GET /pages.json
@@ -19,6 +20,7 @@ class PagesController < ApplicationController
 
   # GET /pages/1/edit
   def edit
+    @sheet = @page.sheet
   end
 
   # POST /pages
@@ -65,6 +67,10 @@ class PagesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_page
       @page = Page.find(params[:id])
+    end
+
+    def set_sheet
+      @sheet = Sheet.find(params[:sheet_id])
     end
 
     # Only allow a list of trusted parameters through.
