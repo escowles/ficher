@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @page.title %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @page.text %>
+</p>
+
+<p>
+  <strong>Row:</strong>
+  <%= @page.row %>
+</p>
+
+<p>
+  <strong>Col:</strong>
+  <%= @page.col %>
+</p>
+
+<p>
+  <strong>Sheet:</strong>
+  <%= @page.sheet_id %>
+</p>
+
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>
