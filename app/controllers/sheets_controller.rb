@@ -16,7 +16,7 @@ class SheetsController < ApplicationController
 
   # GET /sheets/new
   def new
-    @sheet = Sheet.new
+    @sheet = Sheet.new(number: max_number(@work) + 1)
   end
 
   # GET /sheets/1/edit
@@ -78,5 +78,10 @@ class SheetsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def sheet_params
       params.require(:sheet).permit(:number, :title, :work_id)
+    end
+
+    # get the highest sheet number value
+    def max_number(work)
+      Sheet.where(work: work)&.maximum("number") || 0
     end
 end
