@@ -12,10 +12,10 @@ RSpec.describe Page, type: :model do
       expect(page.col).to eq 2
     end
     it "must be unique within the same sheet" do
-      expect { Page.create!(sheet: sheet1, row: page.row, col: page.row) }.to raise_error(ActiveRecord::RecordInvalid)
+      expect { Page.create!(sheet: sheet1, row: page.row, col: page.col) }.to raise_error(ActiveRecord::RecordInvalid)
     end
     it "can be duplicated in different works" do
-      expect { Page.create!(sheet: sheet2, row: page.row, col: page.row ) }.not_to raise_error
+      expect { Page.create!(sheet: sheet2, row: page.row, col: page.col ) }.not_to raise_error
     end
   end
 end
