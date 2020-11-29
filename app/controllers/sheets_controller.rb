@@ -34,6 +34,7 @@ class SheetsController < ApplicationController
         format.html { redirect_to @sheet, notice: 'Sheet was successfully created.' }
         format.json { render :show, status: :created, location: @sheet }
       else
+        @work = Work.find(@sheet.work_id)
         format.html { render :new }
         format.json { render json: @sheet.errors, status: :unprocessable_entity }
       end
